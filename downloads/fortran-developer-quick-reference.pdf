@@ -1,0 +1,29 @@
+Modern Fortran — Developer Quick
+Reference
+A compact orientation sheet for developers working with modern Fortran. Check compiler and project
+documentation for version-specific behavior.
+Core source structure
+program main
+implicit none
+print *, 'Hello, Fortran!'
+end program main
+Useful language habits
+• Use implicit none in program units to avoid unintended implicit typing.
+• Prefer iso_fortran_env kinds such as real64 when a specific precision is required.
+• Use modules to organize reusable procedures, derived types and shared interfaces.
+• Use allocatable for dynamically sized data when ownership and lifetime are clear.
+• Check array bounds, intent attributes and I/O status in robust code.
+Build and package workflow
+Use the compiler documentation for your selected compiler. For package-oriented projects, explore fpm (Fortran
+Package Manager) and its official documentation. Keep build instructions reproducible and record compiler
+versions.
+Language server workflow
+Install fortls from its official upstream instructions, configure your editor's Language Server Protocol client, and
+check the fortls repository for current configuration options. The FORTLS browser helper checks JSON syntax
+only; it is not a semantic validator.
+Official references
+fortls: https://github.com/fortran-lang/fortls
+Fortran community: https://fortran-lang.org/
+fpm: https://fpm.fortran-lang.org/
+GNU Fortran: https://gcc.gnu.org/fortran/
+FORTLS.com is an independent resource hub and is not the official fortls project.
