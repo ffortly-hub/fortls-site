@@ -7,7 +7,7 @@ from PIL import Image, ImageDraw, ImageFont
 # ---------------- CONFIG ----------------
 DOM = "https://fortls.com"
 NEWS = "https://fortls.beehiiv.com"
-BMC = "https://buymeacoffee.com/fortls"
+BMC = "https://ko-fi.com/fortls"
 CLARITY = "zbdjwrsl12"
 UPDATED = "2026-11-15"
 OUT = "site"
