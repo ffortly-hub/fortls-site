@@ -12,9 +12,8 @@ CLARITY = "zbdjwrsl12"
 UPDATED = "2026-11-15"
 OUT = "site"
 # affiliate redirects: replace the URL with your referral URL once approved (kept as plain homepages = no commission, no risk)
-GO = {"vultr": "https://www.vultr.com/", "digitalocean": "https://www.digitalocean.com/",
-      "cloudways": "https://www.cloudways.com/", "hostinger": "https://www.hostinger.com/",
-      "namecheap": "https://www.namecheap.com/"}
+GO = {"vultr": "https://www.vultr.com/?ref=9934870", "digitalocean": "https://www.digitalocean.com/",
+      "cloudways": "https://www.cloudways.com/en/?id=2226421", "hostinger": "https://www.hostinger.com/","namecheap": "https://www.namecheap.com/"}
 # ----------------------------------------
 
 def w(p, s, mode="w"):
