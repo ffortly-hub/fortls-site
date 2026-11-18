@@ -7,13 +7,14 @@ from PIL import Image, ImageDraw, ImageFont
 # ---------------- CONFIG ----------------
 DOM = "https://fortls.com"
 NEWS = "https://fortls.beehiiv.com"
-BMC = "https://ko-fi.com/fortls"
+BMC = "https://buymeacoffee.com/fortls"
 CLARITY = "zbdjwrsl12"
 UPDATED = "2026-11-15"
 OUT = "site"
 # affiliate redirects: replace the URL with your referral URL once approved (kept as plain homepages = no commission, no risk)
-GO = {"vultr": "https://www.vultr.com/?ref=9934870", "digitalocean": "https://www.digitalocean.com/",
-      "cloudways": "https://www.cloudways.com/en/?id=2226421", "hostinger": "https://www.hostinger.com/","namecheap": "https://www.namecheap.com/"}
+GO = {"vultr": "https://www.vultr.com/", "digitalocean": "https://www.digitalocean.com/",
+      "cloudways": "https://www.cloudways.com/", "hostinger": "https://www.hostinger.com/",
+      "namecheap": "https://www.namecheap.com/"}
 # ----------------------------------------
 
 def w(p, s, mode="w"):
@@ -56,7 +57,7 @@ SOC=[("GitHub",GH),("LinkedIn","https://www.linkedin.com/in/fortls/"),("YouTube"
 def ext(u,l,c=""): return f'<a class="btn {c}" href="{u}" target="_blank" rel="noopener noreferrer">{l}</a>'
 NL = '<section class="wrap section"><div class="callout"><h2>Join the FORTLS Newsletter</h2><p>Receive tutorials, development guides, tooling resources, release updates, and future downloads.</p>' + ext(NEWS,"Subscribe Free") + '<p class="muted">Subscription is handled by beehiiv; see our <a href="/privacy">privacy policy</a>.</p></div></section>'
 COMM = '<section id="community" class="section"><h2>Community</h2><p class="lead">Find FORTLS elsewhere.</p><p>' + ext(DOM,"Website","secondary") + " ".join(ext(u,l,"secondary") for l,u in SOC) + '</p></section>'
-SUPBTN = '<p>' + ext(BMC,"Buy me a coffee ↗") + " " + ext(SPON,"GitHub Sponsors ↗","secondary") + " " + ext(KOFI,"Ko-fi ↗","secondary") + " " + ext(PP,"PayPal ↗","secondary") + '</p>'
+SUPBTN = '<p>' + ext(SPON,"GitHub Sponsors ↗") + " " + ext(KOFI,"Ko-fi ↗","secondary") + " " + ext(PP,"PayPal ↗","secondary") + '</p>'
 
 # ---------- pages ----------
 JSONLD = '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@graph": [
@@ -69,9 +70,10 @@ page("index", "FORTLS — Free tools and resources for Fortran developers",
 <div class="actions"><a class="btn" href="/tools">Open the free tools</a><a class="btn secondary" href="/resources">Browse resources</a></div></section>
 <main class="wrap"><section class="section"><h2>What you’ll find here</h2><div class="grid">
 <article class="card"><span class="tag">Tool</span><h3>.fortls generator</h3><p>Pick options, get a ready-to-use configuration file.</p><a href="/tools#fortls">Open →</a></article>
-<article class="card"><span class="tag">Tool</span><h3>Config checker</h3><p>Check a config for syntax errors and unrecognised keys.</p><a href="/tools#check">Open →</a></article>
+<article class="card"><span class="tag">Tool</span><h3>fortls validator</h3><p>Check a config for syntax errors and unrecognised keys.</p><a href="/tools#check">Open →</a></article>
 <article class="card"><span class="tag">Tool</span><h3>fpm.toml generator</h3><p>Start a Fortran Package Manager project manifest.</p><a href="/tools#fpm">Open →</a></article>
-<article class="card"><span class="tag">Download</span><h3>Quick reference (PDF)</h3><p>A free one-page modern Fortran orientation sheet.</p><a href="/downloads/fortran-developer-quick-reference.pdf">Download →</a></article>
+<article class="card"><span class="tag">Tool</span><h3>VS Code settings</h3><p>Generate Modern Fortran extension settings.</p><a href="/tools#vscode">Open →</a></article>
+<article class="card"><span class="tag">Download</span><h3>Quick reference (PDF)</h3><p>A free two-page modern Fortran cheat sheet and quick start guide.</p><a href="/downloads/fortran-developer-quick-reference.pdf">Download →</a></article>
 </div></section>
 <section class="section"><h2>Free, and kept running by the community</h2><p class="lead">The tools are free. Hosting is covered by voluntary support and clearly labelled affiliate links.</p>
 <p><a class="btn secondary" href="/support">Support the project</a> <a class="btn secondary" href="/newsletter">Newsletter</a></p></section>
@@ -82,6 +84,7 @@ page("resources", "Fortran & fortls resources — FORTLS", "Curated official lin
 <p class="lead">Links go to their official maintainers. This list is informational and not an endorsement; check current compatibility and licences yourself.</p>
 <h2>fortls and editors</h2><ul>
 <li><a href="https://github.com/fortran-lang/fortls" target="_blank" rel="noopener noreferrer">fortls — official repository</a></li>
+<li><a href="https://fortls.fortran-lang.org/" target="_blank" rel="noopener noreferrer">fortls documentation</a></li>
 <li><a href="https://pypi.org/project/fortls/" target="_blank" rel="noopener noreferrer">fortls on PyPI</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=fortran-lang.linter-gfortran" target="_blank" rel="noopener noreferrer">Modern Fortran extension for VS Code</a></li>
 <li><a href="https://github.com/neovim/nvim-lspconfig" target="_blank" rel="noopener noreferrer">nvim-lspconfig (Neovim)</a></li>
@@ -175,7 +178,7 @@ page("privacy", "Privacy — FORTLS", "How FORTLS.com handles visitor data.",
 <h2>What we don’t collect</h2><p>No accounts, no forms, no comments. The tools run in your browser; the text you enter is not sent to us.</p>
 <h2>Hosting</h2><p>The site is served by Cloudflare, which may process technical data such as IP address and request details to deliver and secure the site, under its own <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">privacy policy</a>.</p>
 <h2>Analytics (only with your consent)</h2><p>If you click Accept in the banner, we load Microsoft Clarity, which records how pages are used (clicks, scrolling, device and approximate location, and session replays with sensitive content masked) and sets cookies. Data is processed by Microsoft under its <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">privacy statement</a>. If you decline, Clarity is not loaded. Use “Privacy choices” in the footer to change your decision; choose Decline and clear this site’s cookies to remove existing ones. Your choice is stored in your browser’s local storage.</p>
-<h2>Third-party links</h2><p>Links to beehiiv (newsletter), Buy Me a Coffee, GitHub Sponsors, Ko-fi and PayPal (support), social platforms, GitHub, and affiliate partners lead to services with their own privacy policies. Information you give them is theirs to process, not ours.</p>
+<h2>Third-party links</h2><p>Links to beehiiv (newsletter), GitHub Sponsors, Ko-fi and PayPal (support), social platforms, GitHub, and affiliate partners lead to services with their own privacy policies. Information you give them is theirs to process, not ours.</p>
 <h2>Email</h2><p>Mail to @fortls.com addresses is forwarded to the owner’s mailbox and used only to reply.</p>
 <h2>Your rights</h2><p>Depending on where you live (for example the EU/UK), you may have rights to access, correct or delete personal data. Email hello@fortls.com. We don’t knowingly collect data from children.</p>
 <h2>Changes</h2><p>We may update this page; the date above shows the latest version.</p>'''))
