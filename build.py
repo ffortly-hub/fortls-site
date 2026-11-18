@@ -7,13 +7,13 @@ from PIL import Image, ImageDraw, ImageFont
 # ---------------- CONFIG ----------------
 DOM = "https://fortls.com"
 NEWS = "https://fortls.beehiiv.com"
-BMC = "https://buymeacoffee.com/fortls"
+BMC = "https://ko-fi.com/fortls"
 CLARITY = "zbdjwrsl12"
 UPDATED = "2026-11-15"
 OUT = "site"
 # affiliate redirects: replace the URL with your referral URL once approved (kept as plain homepages = no commission, no risk)
-GO = {"vultr": "https://www.vultr.com/", "digitalocean": "https://www.digitalocean.com/",
-      "cloudways": "https://www.cloudways.com/", "hostinger": "https://www.hostinger.com/",
+GO = {"vultr": "https://www.vultr.com/?ref=9934870", "digitalocean": "https://www.digitalocean.com/",
+      "cloudways": "https://www.cloudways.com/en/?id=2226421", "hostinger": "https://www.hostinger.com/",
       "namecheap": "https://www.namecheap.com/"}
 # ----------------------------------------
 
