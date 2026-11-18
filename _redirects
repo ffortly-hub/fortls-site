@@ -1,6 +1,6 @@
 # Affiliate links: replace the target with your referral URL once approved. 302 = temporary, so changes take effect.
-/go/https://www.vultr.com/?ref=9934870/ 302
-/go/digitalocean https://www.digitalocean.com/ 302
-/go/https://www.cloudways.com/en/?id=2226421/ 302
-/go/hostinger https://www.hostinger.com/ 302
-/go/namecheap https://www.namecheap.com/ 302
+/go/vultr        https://www.vultr.com/?ref=9934870        302
+/go/digitalocean https://www.digitalocean.com/                 302
+/go/cloudways    https://www.cloudways.com/en/?id=2226421     302
+/go/hostinger    https://www.hostinger.com/                   302
+/go/namecheap    https://www.namecheap.com/                   302
