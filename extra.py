@@ -4,6 +4,7 @@ CSS_EXTRA = '''
 .meta{color:var(--muted);font-size:.88rem}main.page pre{overflow:auto;background:#0b111a;border:1px solid var(--line);border-radius:8px;padding:14px;font-size:.85rem}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:14px}ul.status{list-style:none;padding:0}ul.status li{display:flex;justify-content:space-between;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:8px 0;background:#121923}.up{color:var(--green);font-weight:700}
 .entry{border-left:3px solid var(--violet);padding-left:16px;margin:26px 0}
+.fortls-support-box{border:1px solid #3c4265;background:#171a2c;border-radius:12px;padding:24px}.fortls-support-box h2{margin-top:0}.fortls-support-box .btn svg,a.star svg{width:16px;height:16px;vertical-align:-3px;margin-right:6px}.sb-row .btn{margin:4px 8px 4px 0}a.star{display:inline-flex;align-items:center}
 '''
 def crumbs(items):
     return '<nav class="crumbs" aria-label="Breadcrumb">' + " › ".join(f'<a href="{u}">{n}</a>' for n, u in items[:-1]) + " › " + items[-1][0] + '</nav>'
@@ -18,7 +19,7 @@ def article(slug, title, desc, body, mins):
          "publisher": {"@type": "Organization", "name": "FORTLS", "logo": {"@type": "ImageObject", "url": DOM + "/logo.png"}}}, bc_ld(items)]}
     page("blog/" + slug, title + " — FORTLS", desc,
          main_(crumbs(items) + f'<article><h1>{title}</h1><p class="meta">Published 15 November 2026 · {mins} min read · FORTLS</p>' + body +
-               '<p class="notice">FORTLS.com is an independent community resource, not the official fortls project. Verify commands against the official documentation for your versions.</p></article>') + NL,
+               '<p class="notice">FORTLS.com is an independent community resource, not the official fortls project. Verify commands against the official documentation for your versions.</p></article>') + SUPPORT_BOX,
          '<script type="application/ld+json">' + json.dumps(ld) + '</script>')
 
 article("what-is-fortls", "What is fortls? A plain-English guide to the Fortran Language Server",
@@ -138,12 +139,12 @@ page("downloads", "Free Downloads & Developer Resources — FORTLS", "Free quick
 <article class="card"><span class="badge soon">Planned</span><h3>VS Code Setup Guide</h3><p>A longer companion to our <a href="/blog/install-fortls-vscode">installation article</a>.</p></article>
 <article class="card"><span class="badge soon">Planned</span><h3>fortls Configuration Handbook</h3><p>Until then, use the <a href="/tools#fortls">generator</a>.</p></article>
 <article class="card"><span class="badge soon">Planned</span><h3>FPM Developer Reference</h3><p>Until then, use the <a href="/tools#fpm">fpm.toml generator</a>.</p></article></div>
-<p class="notice">Downloads are provided as-is. Check commands against the official documentation for your versions.</p>''') + NL)
+<p class="notice">Downloads are provided as-is. Check commands against the official documentation for your versions.</p>''') + SUPPORT_BOX)
 
 page("partners", "Recommended Infrastructure & Development Partners — FORTLS", "Hosting and cloud providers commonly used by Fortran and scientific-computing developers, with affiliate disclosure.",
  main_(crumbs([("Home", "/"), ("Partners", "/partners")]) + '''<h1>Recommended Infrastructure &amp; Development Partners</h1>
 <p class="lead">Providers that developers in scientific computing commonly use for hosting, development environments and CI. We list them for convenience; we have not benchmarked them, so compare pricing and terms yourself.</p>
-<p class="notice"><strong>Disclosure:</strong> some links on this page may be affiliate links. If you sign up through them, FORTLS may earn a commission at no additional cost to you.</p>
+<p class="notice"><strong>Disclosure:</strong> the links to Cloudways and Vultr on this page are affiliate links. If you sign up through them, FORTLS may earn a commission at no additional cost to you.</p>
 <h2>Cloudways</h2><p>Managed cloud hosting that sits on top of infrastructure providers, aimed at simpler server management and application deployments.</p><p>''' + aff("cloudways", "Visit Cloudways") + '''</p>
 <h2>Vultr</h2><p>Cloud infrastructure offering virtual machines and other compute options that developers use for test servers, build machines and CI runners.</p><p>''' + aff("vultr", "Visit Vultr") + '''</p>
 <h2>Future partners</h2><p>More ecosystem partners may be added over time. See also the full list on <a href="/resources#disclosure">resources</a>, or <a href="/sponsors">sponsor FORTLS</a>.</p>'''))
@@ -151,7 +152,7 @@ page("partners", "Recommended Infrastructure & Development Partners — FORTLS",
 page("status", "FORTLS Status", "Status of the FORTLS website, guides, downloads and newsletter.",
  main_(crumbs([("Home", "/"), ("Status", "/status")]) + '''<h1>FORTLS Status</h1><p class="lead">System status, platform availability, and operational updates.</p>
 <ul class="status"><li><span>Website</span><span class="up">Operational</span></li><li><span>Guides &amp; blog</span><span class="up">Online</span></li><li><span>Newsletter</span><span class="up">Available</span></li><li><span>Downloads</span><span class="up">Available</span></li><li><span>Community channels</span><span><a href="/#community">Listed here</a></span></li></ul>
-<p><strong>Last reviewed:</strong> 15 November 2026. <strong>No known platform issues.</strong></p>
+<p><strong>Last reviewed:</strong> 22 November 2026. <strong>No known platform issues.</strong></p>
 <p class="notice">This page is reviewed by hand, not by automated monitoring. The site is static and hosted by Cloudflare; see <a href="https://www.cloudflarestatus.com/" target="_blank" rel="noopener noreferrer">Cloudflare Status</a> for live infrastructure information. Report problems to <a href="mailto:support@fortls.com">support@fortls.com</a>.</p>'''))
 
 page("changelog", "FORTLS Changelog", "Platform updates, feature releases and improvements for FORTLS.com.",
@@ -159,4 +160,37 @@ page("changelog", "FORTLS Changelog", "Platform updates, feature releases and im
 <div class="entry"><h2>Version 1.0 — Official Public Launch</h2><p class="meta">November 2026</p><ul><li>Website launched</li><li>Resource hub launched</li><li>Newsletter launched</li></ul></div>
 <div class="entry"><h2>Version 1.1 — Community Expansion</h2><p class="meta">November 2026</p><ul><li>Social channels established</li><li>GitHub Sponsors enabled</li><li>Ko-fi support enabled</li></ul></div>
 <div class="entry"><h2>Version 1.2 — Resource Library</h2><p class="meta">November 2026</p><ul><li>Cheat sheet added</li><li>Download center added</li></ul></div>
-<div class="entry"><h2>Version 1.3 — Learning &amp; Tools</h2><p class="meta">November 2026</p><ul><li>Blog with two guides</li><li>VS Code settings generator, validator and advanced .fortls generator</li><li>Partners, status and changelog pages</li></ul></div>'''))
+<div class="entry"><h2>Version 1.3 — Learning &amp; Tools</h2><p class="meta">November 2026</p><ul><li>Blog with two guides</li><li>VS Code settings generator, validator and advanced .fortls generator</li><li>Partners, status and changelog pages</li></ul></div>
+<div class="entry"><h2>Version 1.4 — Privacy, Tracking &amp; Discovery</h2><p class="meta">November 2026</p><ul><li>Single consent banner for Google Tag, Google Analytics 4 and Microsoft Clarity, with Consent Mode v2</li><li>Event tracking for affiliate, newsletter, support, download and tool actions</li><li>FAQ, newsletter archive and RSS feed</li><li>Support box on articles, tools and downloads; latest-activity block on the home page</li><li>Updated privacy policy, terms and affiliate disclosure</li></ul></div>'''))
+
+
+# ---------- v1.4: FAQ, newsletter archive, feed ----------
+FAQS = [
+ ("What is fortls?", 'fortls is an open-source language server for Fortran. It gives editors features such as autocompletion, hover information and go-to-definition. The upstream project is developed by the fortran-lang community on <a href="https://github.com/fortran-lang/fortls" target="_blank" rel="noopener">GitHub</a>. Read our <a href="/blog/what-is-fortls">plain-English guide</a>.'),
+ ("Is FORTLS official?", "No. FORTLS is an independent community resource. It is not the official fortls project and is not affiliated with the fortls maintainers or the Fortran-lang organization."),
+ ("Which editors are supported?", 'Any editor with a Language Server Protocol client can use fortls, including Visual Studio Code (Modern Fortran extension), Neovim, Vim, Emacs and Sublime Text. See <a href="/blog/install-fortls-vscode">installing fortls in VS Code</a>.'),
+ ("What is FPM?", 'The Fortran Package Manager (fpm) builds Fortran projects and manages dependencies. Our <a href="/tools#fpm">fpm.toml generator</a> creates a starter manifest. Official documentation: <a href="https://fpm.fortran-lang.org/" target="_blank" rel="noopener">fpm.fortran-lang.org</a>.'),
+ ("What tools are available?", 'Four free browser tools: the .fortls generator, the fortls validator, the fpm.toml generator and the VS Code settings generator. They run locally and nothing is uploaded. <a href="/tools">Open the tools</a>.'),
+ ("Is everything free?", "Yes. The tools, guides and downloads are free. The site is kept running by voluntary support, labelled affiliate links (Cloudways and Vultr) and, in future, labelled sponsorships."),
+ ("How can I support the project?", 'Through GitHub Sponsors, Ko-fi or PayPal on the <a href="/support">support page</a>, by subscribing to the <a href="/newsletter">newsletter</a>, or by starring us on GitHub.'),
+ ("Can I advertise on FORTLS?", 'We offer a small number of manually managed, clearly labelled sponsorships. There are no display ads, popups or programmatic ad networks. See <a href="/sponsors">sponsors</a>.'),
+ ("Is the domain available for acquisition?", 'Yes. FORTLS.com is for sale. Make an offer through Afternic or email offers@fortls.com. See <a href="/acquisition">acquisition</a>.'),
+]
+_faq_ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQS]}
+page("faq", "FAQ — FORTLS", "Answers about fortls, FORTLS.com, the free tools, support, sponsorship and the domain.",
+ main_(crumbs([("Home", "/"), ("FAQ", "/faq")]) + '<h1>Frequently asked questions</h1>' + "".join(f"<h2>{q}</h2><p>{a}</p>" for q, a in FAQS)) + SUPPORT_BOX,
+ '<script type="application/ld+json">' + json.dumps(_faq_ld) + '</script>')
+
+_arch = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{t}</a> <span class="muted">· {d}</span></li>' for d, t, u, _ in ISSUES)
+page("newsletter/archive", "Newsletter archive — FORTLS", "Past issues of the FORTLS newsletter, hosted on beehiiv.",
+ main_(crumbs([("Home", "/"), ("Newsletter", "/newsletter"), ("Archive", "/newsletter/archive")]) + '<h1>Newsletter archive</h1><p class="lead">Past issues of the FORTLS newsletter. Issues open on beehiiv.</p>' +
+       ("<ul>" + _arch + "</ul>" if ISSUES else "<p>No issues are listed here yet.</p>") + '<p>' + go("beehiiv", "Browse all issues on beehiiv ↗") + '</p>') + NL)
+
+from email.utils import format_datetime
+from datetime import datetime, timezone
+from xml.sax.saxutils import escape
+def _rfc(d): return format_datetime(datetime.strptime(d, "%Y-%m-%d").replace(hour=12, tzinfo=timezone.utc))
+_items = [("Article", p) for p in POSTS] + [("Tool", p) for p in TOOLREL] + [("Download", p) for p in DLS] + [("Newsletter", p) for p in ISSUES]
+_items.sort(key=lambda t: t[1][0], reverse=True)
+_xml = "".join(f'<item><title>{escape(k + ": " + it[1])}</title><link>{escape(it[2] if it[2].startswith("http") else DOM + it[2])}</link><guid isPermaLink="false">fortls-{k.lower()}-{escape(it[2])}</guid><pubDate>{_rfc(it[0])}</pubDate><category>{k}</category><description>{escape(it[3])}</description></item>' for k, it in _items)
+w("feed.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FORTLS</title><link>' + DOM + '/</link><description>Free tools and resources for Fortran developers.</description><language>en</language><lastBuildDate>' + _rfc(UPDATED) + '</lastBuildDate><atom:link href="' + DOM + '/feed.xml" rel="self" type="application/rss+xml"/>' + _xml + '</channel></rss>\n')

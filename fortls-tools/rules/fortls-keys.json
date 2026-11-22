@@ -1,0 +1,32 @@
+{
+  "_note": "Keys known to the FORTLS validator. Check the official fortls docs; options change between releases.",
+  "keys": {
+    "source_dirs": "array",
+    "ext_source_dirs": "array",
+    "excl_paths": "array",
+    "excl_suffixes": "array",
+    "incl_suffixes": "array",
+    "pp_suffixes": "array",
+    "include_dirs": "array",
+    "autocomplete_no_prefix": "boolean",
+    "autocomplete_no_snippets": "boolean",
+    "autocomplete_name_only": "boolean",
+    "lowercase_intrinsics": "boolean",
+    "use_signature_help": "boolean",
+    "variable_hover": "boolean",
+    "hover_signature": "boolean",
+    "enable_code_actions": "boolean",
+    "symbol_skip_mem": "boolean",
+    "incremental_sync": "boolean",
+    "preserve_keyword_order": "boolean",
+    "debug_log": "boolean",
+    "notify_init": "boolean",
+    "disable_diagnostics": "boolean",
+    "pp_defs": "object",
+    "nthreads": "number",
+    "max_line_length": "number",
+    "max_comment_line_length": "number",
+    "hover_language": "string",
+    "config": "string"
+  }
+}
